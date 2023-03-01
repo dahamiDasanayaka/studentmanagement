@@ -24,7 +24,7 @@ public class StudentServiceIMPL implements StudentService {
 
     @Override
     public String saveStudent(StudentSaveRequestDTO studentSaveRequestDTO) {
-        
+
         studentRepo.save(modelMapper.map(studentSaveRequestDTO, Student.class));
         return "Student Saved";
     }
@@ -32,7 +32,8 @@ public class StudentServiceIMPL implements StudentService {
     @Override
     public List<StudentDTO> getAllStudents() {
         List<Student> students = studentRepo.findAll();
-        List<StudentDTO> studentDTOS = modelMapper.map(students, new TypeToken<List<StudentDTO>>(){}.getType());
+        List<StudentDTO> studentDTOS = modelMapper.map(students, new TypeToken<List<StudentDTO>>() {
+        }.getType());
         return studentDTOS;
     }
 
@@ -48,55 +49,81 @@ public class StudentServiceIMPL implements StudentService {
         }
 
 
-        @Override
-        public String deleteStudent(int id){
-            boolean exist = studentRepo.existsById(id);
-            if (exist) {
-                studentRepo.deleteById(id);
-                return "Student Deleted";
-            } else {
-                return "Student Not Found";
-            }
-        }
-
-
-        @Override
-        public String updateStudent (StudentUpdateRequestDTO studentUpdateRequestDTO,int id){
-            if (studentRepo.existsById(id)) {
-                studentRepo.updateStudentQuery(studentUpdateRequestDTO.getName(), studentUpdateRequestDTO.getAge(), studentUpdateRequestDTO.getDob(), id);
-                return "Student updated! ";
-            } else {
-                return "No Student Found!";
-            }
-        }
-
-        @Override
-        public String updateStudentName (StudentUpdateNameRequestDTO studentUpdateNameRequestDTO,int id){
-            if (studentRepo.existsById(id)) {
-                studentRepo.updateStudentNameQuery(studentUpdateNameRequestDTO.getName(), id);
-                return "Student Name updated! ";
-            } else {
-                return "No Student Found!";
-            }
-        }
-
-        @Override
-        public String updateStudentAge (StudentUpdateAgeRequestDTO studentUpdateAgeRequestDTO,int id){
-            if (studentRepo.existsById(id)) {
-                studentRepo.updateStudentAgeQuery(studentUpdateAgeRequestDTO.getAge(), id);
-                return "Student Age updated! ";
-            } else {
-                return "No Student Found!";
-            }
-        }
-
-        @Override
-        public String updateStudentDob (StudentUpdateDobRequestDTO studentUpdateDobRequestDTO,int id){
-            if (studentRepo.existsById(id)) {
-                studentRepo.updateStudentDobQuery(studentUpdateDobRequestDTO.getDob(), id);
-                return "Student DOB updated! ";
-            } else {
-                return "No Student Found!";
-            }
-        }
+//        @Override
+//        public String deleteStudent(int id){
+//            boolean exist = studentRepo.existsById(id);
+//            if (exist) {
+//                studentRepo.deleteById(id);
+//                return "Student Deleted";
+//            } else {
+//                return "Student Not Found";
+//            }
+//        }
+//
+//
+//        @Override
+//        public String updateStudent (StudentUpdateRequestDTO studentUpdateRequestDTO,int id){
+//            if (studentRepo.existsById(id)) {
+//                studentRepo.updateStudentQuery(studentUpdateRequestDTO.getName(), studentUpdateRequestDTO.getAge(), studentUpdateRequestDTO.getDob(), id);
+//                return "Student updated! ";
+//            } else {
+//                return "No Student Found!";
+//            }
+//        }
+//
+//        @Override
+//        public String updateStudentName (StudentUpdateNameRequestDTO studentUpdateNameRequestDTO,int id){
+//            if (studentRepo.existsById(id)) {
+//                studentRepo.updateStudentNameQuery(studentUpdateNameRequestDTO.getName(), id);
+//                return "Student Name updated! ";
+//            } else {
+//                return "No Student Found!";
+//            }
+//        }
+//
+//        @Override
+//        public String updateStudentAge (StudentUpdateAgeRequestDTO studentUpdateAgeRequestDTO,int id){
+//            if (studentRepo.existsById(id)) {
+//                studentRepo.updateStudentAgeQuery(studentUpdateAgeRequestDTO.getAge(), id);
+//                return "Student Age updated! ";
+//            } else {
+//                return "No Student Found!";
+//            }
+//        }
+//
+//        @Override
+//        public String updateStudentDob (StudentUpdateDobRequestDTO studentUpdateDobRequestDTO,int id){
+//            if (studentRepo.existsById(id)) {
+//                studentRepo.updateStudentDobQuery(studentUpdateDobRequestDTO.getDob(), id);
+//                return "Student DOB updated! ";
+//            } else {
+//                return "No Student Found!";
+//            }
+//        }
     }
+
+    @Override
+    public String deleteStudent(int id) {
+        return null;
+    }
+
+    @Override
+    public String updateStudent(StudentUpdateRequestDTO studentUpdateRequestDTO, int id) {
+        return null;
+    }
+
+    @Override
+    public String updateStudentName(StudentUpdateNameRequestDTO studentUpdateNameRequestDTO, int id) {
+        return null;
+    }
+
+    @Override
+    public String updateStudentAge(StudentUpdateAgeRequestDTO studentUpdateAgeRequestDTO, int id) {
+        return null;
+    }
+
+    @Override
+    public String updateStudentDob(StudentUpdateDobRequestDTO studentUpdateDobRequestDTO, int id) {
+        return null;
+    }
+}
