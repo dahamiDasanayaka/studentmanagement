@@ -31,14 +31,19 @@ public class StudentController {
         return studentDTO;
     }
 
+    @GetMapping(path = "/welcome/{name}")
+    public String welcome(@PathVariable("name") String name){
+        return name+",Welcome to First Project....";
+    }
+
     // http://localhost:8081/student/get-by-id
 
-    @GetMapping(path = "/get-by-id", params = "id")
-    public StudentDTO getStudentByID(@RequestParam (value = "id") int id){
-
-        StudentDTO studentDTOS = studentService.getStudentById(id);
-        return studentDTOS;
-    }
+//    @GetMapping(path = "/get-by-id", params = "id")
+//    public StudentDTO getStudentByID(@RequestParam (value = "id") int id){
+//
+//        StudentDTO studentDTOS = studentService.getStudentById(id);
+//        return studentDTOS;
+//    }
 
     // http://localhost:8081/student/delete/{id}
 
